@@ -316,7 +316,7 @@ const App: React.FC = () => {
                 src={currentImageUrl} 
                 alt="" 
                 aria-hidden="true"
-                className="w-full h-auto object-contain max-h-[60vh] rounded-xl invisible" 
+                className="w-full h-auto object-contain max-h-[50vh] sm:max-h-[60vh] rounded-xl invisible" 
             />
             
             <div className="absolute inset-0 flex justify-center items-center">
@@ -344,7 +344,7 @@ const App: React.FC = () => {
                             key={originalImageUrl}
                             src={originalImageUrl}
                             alt="Original"
-                            className="object-contain max-h-[60vh] rounded-xl pointer-events-none"
+                            className="object-contain max-h-[50vh] sm:max-h-[60vh] rounded-xl pointer-events-none"
                         />
                     )}
                     {/* The current image is an overlay that fades in/out for comparison */}
@@ -353,19 +353,19 @@ const App: React.FC = () => {
                         key={currentImageUrl}
                         src={currentImageUrl}
                         alt="Current"
-                        className={`absolute top-0 left-0 w-full h-full object-contain max-h-[60vh] rounded-xl transition-opacity duration-200 ease-in-out ${isComparing ? 'opacity-0' : 'opacity-100'}`}
+                        className={`absolute top-0 left-0 w-full h-full object-contain max-h-[50vh] sm:max-h-[60vh] rounded-xl transition-opacity duration-200 ease-in-out ${isComparing ? 'opacity-0' : 'opacity-100'}`}
                     />
                   </div>
                 )}
             </div>
         </div>
         
-        <div className="w-full bg-gray-800/80 border border-gray-700/80 rounded-lg p-2 flex items-center justify-center gap-2 backdrop-blur-sm">
+        <div className="w-full bg-gray-800/80 border border-gray-700/80 rounded-lg p-1 sm:p-2 flex flex-wrap sm:flex-nowrap items-center justify-center gap-1 sm:gap-2 backdrop-blur-sm">
             {(['imagine', 'crop', 'resize', 'filters'] as Tab[]).map(tab => (
                  <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`w-full capitalize font-semibold py-3 px-5 rounded-md transition-all duration-200 text-base ${
+                    className={`flex-1 sm:flex-none capitalize font-semibold py-2 sm:py-3 px-3 sm:px-5 rounded-md transition-all duration-200 text-sm sm:text-base ${
                         activeTab === tab 
                         ? 'bg-gradient-to-br from-blue-500 to-cyan-400 text-white shadow-lg shadow-cyan-500/40' 
                         : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -390,7 +390,7 @@ const App: React.FC = () => {
             {activeTab === 'filters' && <FilterPanel onApplyFilter={handleApplyFilter} isLoading={isLoading} />}
         </div>
         
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6">
             <button 
                 onClick={handleUndo}
                 disabled={!canUndo}
